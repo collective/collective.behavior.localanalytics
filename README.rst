@@ -47,4 +47,7 @@ Future
 Associated Projects
 -------------------
 
-* `collective.spaces <https://pypi.python.org/pypi/collective.spaces`_
+`collective.spaces <https://pypi.python.org/pypi/collective.spaces>`_
+    collective.spaces is a simple way of creating mini-sites within the Plone
+    CMS, with each mini-site based on a fully-customisable template.
+
