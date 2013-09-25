@@ -15,6 +15,12 @@ class LocalAnalyticsLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         # Load ZCML
+        import plone.app.dexterity
+        xmlconfig.file(
+            'configure.zcml',
+            plone.app.dexterity,
+            context=configurationContext
+        )
         import collective.behavior.localanalytics
         xmlconfig.file(
             'configure.zcml',
@@ -29,13 +35,16 @@ class LocalAnalyticsLayer(PloneSandboxLayer):
 #        # Uninstall products installed above
 #        z2.uninstallProduct(app, 'Products.PloneFormGen')
 
+    def setUpPloneSite(self, portal):
+        self['portal'] = portal
+        roles = ('Member', 'Manager')
+        portal.portal_membership.addMember('manager', 'secret', roles, [])
+        roles = ('Member', 'Contributor')
+        portal.portal_membership.addMember('contributor', 'secret', roles, [])
+
 
 LOCALANALYTICS_FIXTURE = LocalAnalyticsLayer()
 LOCALANALYTICS_INTEGRATION_TESTING = IntegrationTesting(
     bases=(LOCALANALYTICS_FIXTURE,),
     name="LocalAnalyticsLayer:Integration"
-)
-LOCALANALYTICS_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(LOCALANALYTICS_FIXTURE, z2.ZSERVER_FIXTURE),
-    name="LocalAnalyticsLayer:Functional"
 )

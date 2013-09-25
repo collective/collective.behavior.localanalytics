@@ -44,6 +44,7 @@ setup(name='collective.behavior.localanalytics',
       extras_require={
           'test': [
               'plone.app.testing',
+              'ipdb',
            ],
       },
       entry_points="""
