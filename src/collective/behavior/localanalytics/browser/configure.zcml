@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+    <browser:viewlet
+        name="collective.behavior.localanalytics"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        for="*"
+        class=".view.LocalAnalyticsViewlet"
+        permission="zope2.View"
+        />
+
+</configure>
