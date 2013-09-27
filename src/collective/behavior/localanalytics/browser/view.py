@@ -4,12 +4,12 @@ from zope.viewlet.interfaces import IViewlet
 
 from Acquisition import aq_parent
 from Products.Five.browser import BrowserView
-from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.interfaces._content import ISiteRoot
 from Products.CMFPlone.utils import safe_unicode
 
 from collective.behavior.localanalytics.analytics import IAnalytics
 from collective.behavior.localanalytics.behavior import ILocalAnalytics
+from collective.behavior.localanalytics import utils
 
 
 class AnalyticsViewlet(BrowserView):
@@ -38,6 +38,6 @@ class LocalAnalyticsViewlet(AnalyticsViewlet):
                                    name=context.analytics_type)
             if analytics:
                 snippet = safe_unicode(
-                    analytics().tag(id=context.analytics_id))
+                    analytics().tag(id=utils.escape_javascript(context.analytics_id)))
 
         return snippet

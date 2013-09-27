@@ -1,5 +1,3 @@
-import re
-
 from zope.interface import alsoProvides, implements, invariant, Invalid
 from zope.component import adapts
 from zope import schema
@@ -8,18 +6,6 @@ from plone.dexterity.interfaces import IDexterityContent
 from plone.autoform.interfaces import IFormFieldProvider
 
 from collective.behavior.localanalytics import MessageFactory as _
-
-
-class InvalidIdError(schema.ValidationError):
-    __doc__ = _(
-        u'Please use only letters, numbers, and the following characters: .-_')
-
-ID_RE = re.compile(r'^[A-z\d\s\.\-_]+$')
-
-def isValidId(value):
-    if ID_RE.match(value):
-        return True
-    raise InvalidIdError
 
 
 class ILocalAnalytics(form.Schema):
@@ -38,7 +24,6 @@ class ILocalAnalytics(form.Schema):
     analytics_id = schema.TextLine(
         title=_(u"Analytics Identifier"),
         description=_(u"Enter your unique identifier associated with your relevant analytics profile."),
-        constraint=isValidId,
         required=False
     )
 
@@ -70,11 +55,4 @@ class LocalAnalytics(object):
         self.context = context
 
     # -*- Your behavior property setters & getters here ... -*-
-    @property
-    def analytics_settings(self):
-        return self.context.analytics_settings
-
-    @analytics_settings.setter
-    def analytics_settings(self, value):
-        import ipdb; ipdb.set_trace()
 
