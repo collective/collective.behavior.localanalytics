@@ -3,6 +3,9 @@
 Introduction
 ============
 
+.. image:: https://travis-ci.org/collective/collective.behavior.localanalytics.png?branch=master
+    :target: https://travis-ci.org/collective/collective.behavior.localanalytics
+
 This package provides a local analytics behaviour for Dexterity-based content
 types within Plone.  By associating the ``Local Analytics`` behaviour with
 a given context, and configuring the settings on that context accordingly,
