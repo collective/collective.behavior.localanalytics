@@ -46,15 +46,23 @@ class TestBehavior(unittest.TestCase):
         self.assertEqual(vocabulary._terms[0].title, u'None')
 
     def test_viewlet_rendering(self):
+        self.container.analytics_id = '<script>alert("xss");</script>'
         viewlet = LocalAnalyticsViewlet(self.container,
                                         self.request,
                                         None,
                                         None)
         snippet = viewlet.render()
-        for value in (self.container.analytics_id,
-                      '<script',
-                      '</script>'):
-            self.assertIn(value, snippet)
+        self.assertNotIn('alert("xss")', snippet)
+        self.assertIn('"&lt;script&gt;alert(&quot;xss&quot;);&lt;/script&gt;"',
+                      snippet)
+
+    def test_viewlet_rendering_security(self):
+        viewlet = LocalAnalyticsViewlet(self.container,
+                                        self.request,
+                                        None,
+                                        None)
+        snippet = viewlet.render()
+
 
     def test_viewlet_rendering_empty(self):
         self.portal.invokeFactory('Folder', 'subfolder')

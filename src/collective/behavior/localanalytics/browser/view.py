@@ -1,3 +1,4 @@
+import cgi
 from zope.interface import implements
 from zope.component import getUtility
 from zope.viewlet.interfaces import IViewlet
@@ -9,7 +10,6 @@ from Products.CMFPlone.utils import safe_unicode
 
 from collective.behavior.localanalytics.analytics import IAnalytics
 from collective.behavior.localanalytics.behavior import ILocalAnalytics
-from collective.behavior.localanalytics import utils
 
 
 class AnalyticsViewlet(BrowserView):
@@ -38,6 +38,7 @@ class LocalAnalyticsViewlet(AnalyticsViewlet):
                                    name=context.analytics_type)
             if analytics:
                 snippet = safe_unicode(
-                    analytics().tag(id=utils.escape_javascript(context.analytics_id)))
+                    analytics().tag(id=cgi.escape(context.analytics_id,
+                                                  quote=True)))
 
         return snippet
