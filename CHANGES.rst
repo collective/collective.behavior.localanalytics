@@ -4,7 +4,11 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added Spanish translation
+  [macagua]
+
+- Added an i18n script
+  [macagua]
 
 
 1.0 (2013-10-10)
