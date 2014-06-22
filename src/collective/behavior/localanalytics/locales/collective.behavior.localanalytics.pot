@@ -1,0 +1,51 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-06-22 04:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#: ./behavior.py:25
+msgid "Analytics Identifier"
+msgstr ""
+
+#: ./behavior.py:18
+msgid "Analytics Type"
+msgstr ""
+
+#: ./configure.zcml
+msgid "Dexterity behavior to enable local web analytics settings."
+msgstr ""
+
+#: ./behavior.py:26
+msgid "Enter your unique identifier associated with your relevant analytics profile."
+msgstr ""
+
+#: ./configure.zcml
+msgid "Local Analytics"
+msgstr ""
+
+#: ./analytics.py:51
+msgid "None"
+msgstr ""
+
+#: ./behavior.py:19
+msgid "Select the type of local analytics to utilise."
+msgstr ""
+
+#: ./behavior.py:33
+msgid "You must specify a unique analytics identifier."
+msgstr ""
+
